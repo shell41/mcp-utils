@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "@sh41/mcp-utils",
+  "version": "0.1.0",
+  "description": "Reusable MCP server primitives and utilities",
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shell41/mcp-utils.git"
+  },
+  "tags": [
+    "mcp",
+    "server",
+    "utils",
+    "helpers",
+    "functional",
+    "pure-functions",
+    "typescript"
+  ],
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "---BUILD": "",
+    "build:src": "swc src --out-dir dist --ignore '**/*.test.ts' --strip-leading-paths",
+    "build:types": "tsc --emitDeclarationOnly --project tsconfig.lib.json",
+    "build": "npm run build:src && npm run build:types",
+    "----CODE-ANALYSIS": "",
+    "lint": "eslint .",
+    "typecheck:code": "tsc --noEmit --project tsconfig.lib.json",
+    "typecheck:configs": "tsc --noEmit --project tsconfig.dev.json",
+    "typecheck": "npm run typecheck:code && npm run typecheck:configs"
+  },
+  "dependencies": {
+    "@swc/helpers": "^0.5.17",
+    "@asd14/node-utils": "^1.3.0",
+    "express": "^5.1.0"
+  },
+  "peerDependencies": {
+    "@modelcontextprotocol/sdk": "^1.18.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@asd14/eslint-config": "^14.2.0",
+    "@asd14/prettier-config": "^1.1.0",
+    "@asd14/ts-config": "^1.1.0",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@modelcontextprotocol/sdk": "^1.18.0",
+    "@semantic-release/git": "^10.0.1",
+    "@swc/cli": "^0.7.8",
+    "@swc/core": "^1.13.5",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.3.1",
+    "conventional-changelog-conventionalcommits": "^9.1.0",
+    "eslint": "^9.35.0",
+    "prettier": "^3.6.2",
+    "semantic-release": "^24.2.8",
+    "typescript": "^5.9.2",
+    "zod": "^3.23.8"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
