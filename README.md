@@ -7,9 +7,8 @@
 > [Model Context Protocol][intro_mcp-ts-sdk] servers and tools with JavaScript
 > and TypeScript.
 
--
--  TypeScript-first development with built-in type safety
-- 󰍉 Easy debugging with [MCP Inspector][intro_mcp-inspector]
+- :gear: TypeScript-first development with built-in type safety
+- :bug: Easy debugging with [MCP Inspector][intro_mcp-inspector]
 
 [intro_mcp-ts-sdk]: https://github.com/modelcontextprotocol/typescript-sdk
 [intro_mcp-inspector]: https://github.com/modelcontextprotocol/inspector
@@ -36,7 +35,7 @@
 ## Installation
 
 ```sh
-npm install @sh41/mcp-tools @modelcontextprotocol/sdk@^1.18 zod@^3.23
+npm install @sh41/mcp-tools @modelcontextprotocol/sdk@^1.18 zod@^3.25
 ```
 
 ### Peer dependencies
@@ -46,7 +45,7 @@ This package requires and assumes you already installed:
 ```json
   "peerDependencies": {
     "@modelcontextprotocol/sdk": "^1.18",
-    "zod": "^3.23"
+    "zod": "^3.25"
   },
 ```
 
