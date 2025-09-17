@@ -1,7 +1,7 @@
 import EventEmitter from "node:events"
 import type { Server } from "node:http"
 import { buildLogger } from "@asd14/node-utils/logger"
-import { findFreePort } from "@asd14/node-utils/network"
+import { getFreePort } from "@asd14/node-utils/network"
 import { icons } from "@asd14/node-utils/terminal"
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js"
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
@@ -218,7 +218,7 @@ const buildMCPServer = (options: McpServerOptions): McpServerInstance => {
           break
         }
         case "http": {
-          const actualPort = port ?? (await findFreePort())
+          const actualPort = port ?? (await getFreePort())
           const expressApp = express()
 
           expressApp.use(express.json())
