@@ -3,10 +3,12 @@
 
 # @sh41/mcp-utils
 
-> Reusable MCP server primitives and utilities for building [Model Context
-> Protocol][intro_mcp-ts-sdk] servers with TypeScript.
+> Reusable MCP primitives and utilities for programaticaly building custom
+> [Model Context Protocol][intro_mcp-ts-sdk] servers and tools with JavaScript
+> and TypeScript.
 
-- TypeScript first development with built-in type safety
+-
+-  TypeScript-first development with built-in type safety
 - 󰍉 Easy debugging with [MCP Inspector][intro_mcp-inspector]
 
 [intro_mcp-ts-sdk]: https://github.com/modelcontextprotocol/typescript-sdk
@@ -14,14 +16,39 @@
 
 ![@sh41/mcp-utils mcp-server demo](docs/demo-screenshot.png "@sh41/mcp-utils mcp-server demo")
 
+<!-- vim-markdown-toc GFM -->
+
+- [Installation](#installation)
+  - [Peer dependencies](#peer-dependencies)
+- [Usage](#usage)
+  - [HTTP Server](#http-server)
+  - [Custom Tool Definition](#custom-tool-definition)
+- [API Reference](#api-reference)
+  - [`buildMCPServer(options)`](#buildmcpserveroptions)
+  - [Server Methods](#server-methods)
+  - [Events](#events)
+  - [Types](#types)
+- [Contributing & Dual Context Package](#contributing--dual-context-package)
+- [License](#license)
+
+<!-- vim-markdown-toc -->
+
 ## Installation
 
 ```sh
 npm install @sh41/mcp-tools @modelcontextprotocol/sdk@^1.18 zod@^3.23
 ```
 
-Peer dependencies `@modelcontextprotocol/sdk^1.18` and `zod^3.23` must be
-installed as well.
+### Peer dependencies
+
+This package requires and assumes you already installed:
+
+```json
+  "peerDependencies": {
+    "@modelcontextprotocol/sdk": "^1.18",
+    "zod": "^3.23"
+  },
+```
 
 > [!INFO]
 >
@@ -73,7 +100,7 @@ await server.start()
 
 // Graceful shutdown
 const shutdown = async () => {
-  logger.info("Shutting down gracefully...")
+  logger.info("Shutting down gracefully…")
   await server.stop()
   process.exit(0)
 }
@@ -213,7 +240,7 @@ Access via `server.events.on(event, handler)`:
 - `requestFailed` - Request processing failed
 - `requestCompleted` - Request processing completed
 
-## Types
+### Types
 
 - `Tool<TInput, TOutput>` - Typed tool definition
 - `ToolHandler<TInput>` - Tool handler function type
@@ -221,3 +248,25 @@ Access via `server.events.on(event, handler)`:
 - `McpServerInstance` - Server instance type
 - `McpServerOptions` - Server configuration type
 - `McpServerEvents` - Event definitions
+
+## Contributing & Dual Context Package
+
+This package works standalone or in an NPM `workspace`. The `--no-workspaces`
+flag in build scripts ensures `package-lock.json` reflects this package's
+dependencies regardless of context.
+
+```sh
+# Standalone
+git clone https://github.com/shell41/mcp-utils.git \
+    && cd mcp-utils \
+    && npm install
+
+# Monorepo
+cd monorepo-root \
+    && git submodule add https://github.com/shell41/mcp-utils.git packages/mcp-utils \
+    && npm install
+```
+
+## License
+
+MIT
