@@ -7,7 +7,7 @@ const DEV_FILES = ["eslint.config.js"]
 /** @type {import("eslint").Linter.Config[]} */
 export default [
   {
-    ignores: commonIgnores,
+    ignores: [...commonIgnores],
   },
   {
     ...tsNodeConfig,
