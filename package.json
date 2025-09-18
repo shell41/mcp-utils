@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
   "name": "@sh41/mcp-utils",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Reusable MCP primitives and utilities for programaticaly building custom Model Context Protocol servers and tools with JavaScript and TypeScript.",
   "sideEffects": false,
   "publishConfig": {
